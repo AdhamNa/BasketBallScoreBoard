@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">BasketBallScoreBoardPJ</string>
+    <string name="team_a_text">Team A</string>
+    <string name="team_b_text">Team B</string>
+    <string name="_3_points_text">+3 Points</string>
+    <string name="_0_text">0</string>
+    <string name="_2_points_text">+2 Points</string>
+    <string name="free_point_text">Free Point</string>
+    <string name="free_point_textA">Free Point</string>
+    <string name="_2_points_textA">+2 Points</string>
+    <string name="_3_points_textA">+3 Points</string>
+    <string name="_0_textB">0</string>
+    <string name="_3_points_textB">+3 Points</string>
+    <string name="_2_points_textB">+2 Points</string>
+    <string name="free_point_textB">Free Point</string>
+    <string name="reset_text">Reset</string>
+</resources>
