@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 
+
 private lateinit var scoreA: TextView
 private lateinit var scoreB: TextView
 private lateinit var resetAll: Button
+var timesClickedA: Int = 0
+var timesClickedB: Int = 0
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,19 +32,19 @@ class MainActivity : AppCompatActivity() {
         val button1A: Button = findViewById(R.id.pt3A)
         val button2A: Button = findViewById(R.id.pt2A)
         val button3A: Button = findViewById(R.id.pt1A)
-        var timesClicked = 0
+
 
         button1A.setOnClickListener {
-            timesClicked += 3
-            scoreA.text = timesClicked.toString()
+            timesClickedA += 3
+            scoreA.text = timesClickedA.toString()
         }
         button2A.setOnClickListener {
-            timesClicked += 2
-            scoreA.text = timesClicked.toString()
+            timesClickedA += 2
+            scoreA.text = timesClickedA.toString()
         }
         button3A.setOnClickListener {
-            timesClicked += 1
-            scoreA.text = timesClicked.toString()
+            timesClickedA += 1
+            scoreA.text = timesClickedA.toString()
         }
 
     }
@@ -51,19 +54,19 @@ class MainActivity : AppCompatActivity() {
         val button1B: Button = findViewById(R.id.pt3B)
         val button2B: Button = findViewById(R.id.pt2B)
         val button3B: Button = findViewById(R.id.pt1B)
-        var timesClicked = 0
+
 
         button1B.setOnClickListener {
-            timesClicked += 3
-            scoreB.text = timesClicked.toString()
+            timesClickedB += 3
+            scoreB.text = timesClickedB.toString()
         }
         button2B.setOnClickListener {
-            timesClicked += 2
-            scoreB.text = timesClicked.toString()
+            timesClickedB += 2
+            scoreB.text = timesClickedB.toString()
         }
         button3B.setOnClickListener {
-            timesClicked += 1
-            scoreB.text = timesClicked.toString()
+            timesClickedB += 1
+            scoreB.text = timesClickedB.toString()
 
         }
 
@@ -72,18 +75,30 @@ class MainActivity : AppCompatActivity() {
     // reset button function
     private fun reset() {
         val resetButton: Button = findViewById(R.id.resetAll)
-        val counter = 0
-
-
         resetButton.setOnClickListener {
 
-            scoreA.text = counter.toString()
-            scoreB.text = counter.toString()
-            resultA()
-            resultB()
+            timesClickedA = 0
+            timesClickedB = 0
+            scoreA.text = "0"
+            scoreB.text = "0"
 
 
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("Team A Score", timesClickedA)
+        outState.putInt("Team B Score", timesClickedB)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        timesClickedA = savedInstanceState.getInt("Team A Score")
+        timesClickedB = savedInstanceState.getInt("Team B Score")
+        scoreA.text = timesClickedA.toString()
+        scoreB.text = timesClickedB.toString()
+
     }
 
 
